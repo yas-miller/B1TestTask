@@ -1,0 +1,107 @@
+﻿@page "/upload_excel_file"
+@using B1TestTask.Components
+@using B1TestTask.Data
+@inject ExcelFilesService excelFilesService
+
+<PageTitle>Загрузить excel-файл</PageTitle>
+
+<h1>Counter</h1>
+
+<CustomModal IsConfirmModalVisible="@ModalIsVisible" ConfirmHeading="@ModalHeading" ConfirmMessage="@ModalMessage"/>
+
+@if (IsLoading)
+{
+    <CustomLoadingSpinner/>
+}
+
+<p role="status">Количество документов: @CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+
+<InputFile OnChange="@UploadFiles" multiple accept=".xls,.xlsx"/>
+
+@code {
+    private bool ModalIsVisible { get; set; } = false;
+    private string ModalHeading { get; set; }
+    private string ModalMessage { get; set; }
+
+    private int CurrentCount = 0;
+    private bool IsLoading { get; set; } = false;
+    private decimal ProgressPercent { get; set; } = 0;
+
+    private List<FileInfo> loadedFiles = new List<FileInfo>();
+    private long maxFileSize = 1024 * 1024; //1 Мб
+
+    private void IncrementCount()
+    {
+        CurrentCount++;
+    }
+
+    private async void UploadFiles(InputFileChangeEventArgs e)
+    {
+        IsLoading = true;
+        loadedFiles.Clear();
+        ProgressPercent = 0;
+
+        foreach (var file in e.GetMultipleFiles())
+        {
+            try
+            {
+                var path = Path.Combine(AppContext.BaseDirectory,
+                    "unsafe_uploads", file.Name);
+                if (!Directory.Exists(Path.GetDirectoryName(path)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(path));
+                }
+                
+                await using FileStream writeStream = new(path, FileMode.Create);
+                using var readStream = file.OpenReadStream(maxFileSize);
+                var bytesRead = 0;
+                var totalRead = 0;
+                var buffer = new byte[1024 * 10];
+
+                while ((bytesRead = await readStream.ReadAsync(buffer)) != 0)
+                {
+                    totalRead += bytesRead;
+
+                    await writeStream.WriteAsync(buffer, 0, bytesRead);
+
+                    ProgressPercent = Decimal.Divide(totalRead, file.Size);
+
+                    StateHasChanged();
+                }
+                
+                loadedFiles.Add(new FileInfo(path));
+            }
+            catch (Exception ex)
+            {
+                this.ModalHeading = "Ошибка";
+                this.ModalMessage = "Ошибка загрузки файл" +
+                                    (e.FileCount > 1 ? "ов" : "а") +
+                                    "на сервер" + ": " +
+                                    ex.Message;
+                this.ModalIsVisible = true;
+                throw;
+            }
+        }
+
+        try
+        {
+            excelFilesService.RegisterExcelFiles(loadedFiles);
+        }
+        catch (Exception ex)
+        {
+            this.ModalHeading = "Ошибка";
+            this.ModalMessage = "Ошибка регистрации файл" +
+                                (e.FileCount > 1 ? "ов" : "а") +
+                                "в БД" + ": " +
+                                ex.Message;
+            this.ModalIsVisible = true;
+            throw;
+        }
+
+        IsLoading = false;
+        StateHasChanged();
+    }
+}

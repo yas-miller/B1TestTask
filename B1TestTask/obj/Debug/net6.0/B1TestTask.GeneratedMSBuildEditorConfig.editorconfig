@@ -1,0 +1,72 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = B1TestTask
+build_property.RootNamespace = B1TestTask
+build_property.ProjectDir = /Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Components/CustomError.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9DdXN0b21FcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Components/CustomModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9DdXN0b21Nb2RhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/AllFiles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWxsRmlsZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Components/CustomLoadingSpinner.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9DdXN0b21Mb2FkaW5nU3Bpbm5lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-yu4zohre9l
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-gvk5rmyxjp
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-gbt1otpfk1
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,56 @@
+@if (IsConfirmModalVisible)
+{
+    <div class="modal fade show" style="display:block; background-color: rgba(10,10,10,.8)" aria-modal="true" role="dialog" @onclick="ConfirmModalCancel">
+        <div class="modal-dialog" @onclick:stopPropagation="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">@ConfirmHeading</h4>
+                    <button type="button" class="close" @onclick="ConfirmModalCancel">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>@ConfirmMessage</p>
+                </div>
+                <div class="modal-footer">
+                    @if (_externalActionCancel is not null)
+                    {
+                        <button type="button" class="btn" @onclick="ConfirmModalCancel">Отмена</button>
+                    }
+                    <button type="button" class="btn btn-danger" @onclick=ConfirmModalOk>Ок</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@code
+{
+    [Parameter]
+    public Action _externalActionOK { get; set; }
+    [Parameter]
+    public Action _externalActionCancel { get; set; }
+    [Parameter]
+    public string ConfirmHeading { get; set; }
+    [Parameter]
+    public string ConfirmMessage { get; set; }
+    [Parameter]
+    public bool IsConfirmModalVisible { get; set; }
+
+    public void ConfirmModalOk()
+    {
+        ConfirmHeading = String.Empty;
+        ConfirmMessage = String.Empty;
+        IsConfirmModalVisible = false;
+        _externalActionOK?.Invoke();
+        StateHasChanged();
+    }
+
+    public void ConfirmModalCancel()
+    {
+        ConfirmHeading = String.Empty;
+        ConfirmMessage = String.Empty;
+        IsConfirmModalVisible = false;
+        _externalActionCancel?.Invoke();
+        StateHasChanged();
+    }
+}

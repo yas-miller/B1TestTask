@@ -1,0 +1,79 @@
+@page "/all_files"
+@using B1TestTask.Data
+@using B1TestTask.Components
+@inject ExcelFilesService excelFilesService
+
+<h3>Список всех файлов</h3>
+
+@if (IsLoading)
+{
+    <CustomLoadingSpinner/>
+}
+
+@if (Error is not null)
+{
+    IsLoading = false;
+    <CustomError ErrorMessage="@this.Error"/>
+}
+
+@if (ExcelFiles is not null)
+{
+    <table class="excel_files_table">
+        <thead>
+        <tr>
+            <th>Имя файла</th>
+            <th></th>
+            <th>Полное имя файла</th>
+            <th>Summary</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var excelFile in ExcelFiles)
+        {
+            <a href="/file/@excelFile.Id" title="Просмотреть @excelFile.Name">
+                <tr>
+                    <td>@excelFile.Name</td>
+                    <td>@excelFile.Extension</td>
+                    <td>@excelFile.FullName</td>
+                    <td>@excelFile.Description</td>
+                    <td>@excelFile.AddedDate.ToString()</td>
+                </tr>
+            </a>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <text>Пока что нет файлов в базе данных</text>
+    <a href="/upload_excel_file">Загрузите файл</a>
+}
+
+
+@code {
+    public ExcelFile[] ExcelFiles { get; set; }
+    public bool IsLoading { get; set; } = true;
+    public string? Error { get; set; }
+
+    void GetExcelFiles()
+    {
+        try
+        {
+            var excelFiles = this.excelFilesService.GetExcelFiles();
+            this.ExcelFiles = excelFiles.Length > 0 ? excelFiles : null;
+        }
+        catch (Exception e)
+        {
+            Error = e.Message;
+        }
+        finally
+        {
+            this.IsLoading = false;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(GetExcelFiles);
+    }
+}

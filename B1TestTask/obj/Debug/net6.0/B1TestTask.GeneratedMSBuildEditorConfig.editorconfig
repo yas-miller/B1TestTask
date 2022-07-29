@@ -35,6 +35,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/ExcelFileViewer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhjZWxGaWxlVmlld2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

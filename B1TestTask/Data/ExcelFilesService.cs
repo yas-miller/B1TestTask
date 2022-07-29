@@ -11,7 +11,7 @@ public class ExcelFilesService
         {
             foreach (var loadedExcelFile in loadedExcelFiles)
             {
-                db.ExcelFiles.Add(new ExcelFile {FullName = loadedExcelFile.FullName, Name = loadedExcelFile.Name, Extension = loadedExcelFile.Extension });
+                db.ExcelFiles.Add(new ExcelFile {FullName = loadedExcelFile.FullName, Name = loadedExcelFile.Name, Extension = loadedExcelFile.Extension});
             }
             db.SaveChanges();
         }

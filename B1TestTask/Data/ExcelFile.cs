@@ -11,6 +11,8 @@ public class ExcelFile
     
     public DateTime AddedDate { get; set; }
 
+    public ExcelFileReportDetails? ExcelFileReportDetails { get; set; }
+    
     public ExcelFile()
     {
         AddedDate = DateTime.Now;

@@ -7,8 +7,4 @@ public class BankAccountDetails
     public TurnoverDetails TurnoverDetails { get; set; }
 
     public OutputSaldoDetails OutputSaldoDetails { get; set; }
-    public DateTime ToDate { get; set; }
-    public DateTime GeneratedDate { get; set; }
-    
-    public string Currency { get; set; }
 }

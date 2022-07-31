@@ -7,6 +7,4 @@ public class ClassDetails
     public string Title { get; set; }
 
     public List<BankAccountDetails> BankAccountDetailsArray { get; set; }
-    
-    public string Currency { get; set; }
 }

@@ -5,7 +5,7 @@
 
 <PageTitle>Загрузить excel-файл</PageTitle>
 
-<h1>Counter</h1>
+<h1>Загрузить excel-файл</h1>
 
 <CustomModal IsConfirmModalVisible="@ModalIsVisible" ConfirmHeading="@ModalHeading" ConfirmMessage="@ModalMessage"/>
 
@@ -59,7 +59,7 @@
                 using var readStream = file.OpenReadStream(maxFileSize);
                 var bytesRead = 0;
                 var totalRead = 0;
-                var buffer = new byte[1024 * 10];
+                var buffer = new byte[1024 * 10]; //По 10 кб передаем на сервер
 
                 while ((bytesRead = await readStream.ReadAsync(buffer)) != 0)
                 {

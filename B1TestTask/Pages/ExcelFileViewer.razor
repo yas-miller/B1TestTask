@@ -1,7 +1,124 @@
 @page "/file/{ExcelFileId:int}"
+@using B1TestTask.Components
+@using B1TestTask.Data
+@inject ExcelFilesService excelFilesService
+
 <h3>Просмотр excel-файла</h3>
 
+@if (IsLoading)
+{
+    <CustomLoadingSpinner/>
+}
+
+@if (Error is not null)
+{
+    IsLoading = false;
+    <CustomError ErrorMessage="@this.Error"/>
+}
+
+@if (ExcelFile is not null)
+{
+    <table class="excel_file_table table-border">
+        <thead>
+
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>@ExcelFile.ExcelFileReportDetails.BankName</td>
+            <td/>
+            <td/>
+            <td/>
+            <td/>
+            <td/>
+            <td/>
+        </tr>
+        <tr>
+            <td colspan="7" align="center">@ExcelFile.ExcelFileReportDetails.Title</td>
+        </tr>
+        <tr>
+            <td colspan="7" align="center">за период с @ExcelFile.ExcelFileReportDetails.FromDate.Value.ToShortDateString() по @ExcelFile.ExcelFileReportDetails.ToDate.Value.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <td colspan="7" align="center">@ExcelFile.ExcelFileReportDetails.TargetName</td>
+        </tr>
+        <tr>
+            <td class="borderless"/>
+        </tr>
+        <tr>
+            <td>@ExcelFile.ExcelFileReportDetails.GeneratedDate.Value.ToShortDateString()</td>
+            <td/>
+            <td/>
+            <td/>
+            <td/>
+            <td/>
+            <td>@ExcelFile.ExcelFileReportDetails.Currency</td>
+        </tr>
+        
+        
+        <tr>
+            <td rowspan="2">Б/сч</td>
+            <td colspan="2" align="center" style="font-weight: bold;">ВХОДЯЩЕЕ САЛЬДО</td>
+            <td colspan="2" align="center" style="font-weight: bold;">ОБОРОТЫ</td>
+            <td colspan="2" align="center" style="font-weight: bold;">ИСХОДЯЩЕЕ САЛЬДО</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Актив</td>
+            <td style="font-weight: bold;">Пассив</td>
+            <td style="font-weight: bold;">Дебет</td>
+            <td style="font-weight: bold;">Кредит</td>
+            <td style="font-weight: bold;">Актив</td>
+            <td style="font-weight: bold;">Пассив</td>
+        </tr>
+        @foreach (var classDetails in this.ExcelFile.ExcelFileReportDetails.ClassDetailsArray)
+        {
+            <tr>
+                <td style="font-weight: bold;" colspan="7">КЛАСС  @classDetails.Number  @classDetails.Title</td>
+            </tr>
+            @foreach (var bankAccount in classDetails.BankAccountDetailsArray)
+            {
+                <tr>
+                    <td>@bankAccount.Number.ToString()</td>
+                    <td>@bankAccount.InputSaldoDetails.Active.ToString()</td>
+                    <td>@bankAccount.InputSaldoDetails.Passive.ToString()</td>
+                    <td>@bankAccount.TurnoverDetails.Debit.ToString()</td>
+                    <td>@bankAccount.TurnoverDetails.Credit.ToString()</td>
+                    <td>@bankAccount.OutputSaldoDetails.Active.ToString()</td>
+                    <td>@bankAccount.OutputSaldoDetails.Passive.ToString()</td>
+                </tr>
+            }
+            <tr>
+                <td style="font-weight: bold;">ПО КЛАССУ</td>
+                <td>@classDetails.BankAccountDetailsArray.Aggregate((x, y) => x.InputSaldoDetails.Active + y.InputSaldoDetails.Active).ToString()</td>
+
+            </tr>
+        }
+
+
+        </tbody>
+    </table>
+}
+else
+{
+    <text>Здесь пусто</text>
+}
+
 @code {
+    public bool IsLoading { get; set; } = true;
+    public string? Error { get; set; }
+    
     [Parameter]
     public int ExcelFileId { get; set; }
+    public ExcelFile? ExcelFile { get; set; }
+
+    void GetExcelFile()
+    {
+        this.ExcelFile = excelFilesService.GetExcelFileById(ExcelFileId);
+        this.IsLoading = false;
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(GetExcelFile);
+    }
 }

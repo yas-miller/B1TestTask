@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.FileProviders;
 
 namespace B1TestTask.Data;
@@ -11,9 +13,16 @@ public class ExcelFilesService
         {
             foreach (var loadedExcelFile in loadedExcelFiles)
             {
-                db.ExcelFiles.Add(new ExcelFile {FullName = loadedExcelFile.FullName, Name = loadedExcelFile.Name, Extension = loadedExcelFile.Extension});
+                var excelFile = new ExcelFile
+                {
+                    FullName = loadedExcelFile.FullName, Name = Path.GetFileNameWithoutExtension(loadedExcelFile.Name), Extension = loadedExcelFile.Extension
+                };
+                db.ExcelFiles.Add(excelFile);
+                db.SaveChanges();
+
+                new ExcelFileParser(ref excelFile).parseExcelFile();
+                db.SaveChanges();
             }
-            db.SaveChanges();
         }
     }
     
@@ -27,6 +36,29 @@ public class ExcelFilesService
         }
     }
 
+    public ExcelFile? GetExcelFileById(int id)
+    {
+        // получение данных
+        using (var db = new ApplicationDBContext())
+        {
+            return db.ExcelFiles
+                .Where(ef => ef.Id == id)
+                .Include(ef => ef.ExcelFileReportDetails)
+                .ThenInclude(efrd => efrd.ClassDetailsArray)
+                .ThenInclude(cda => cda.BankAccountDetailsArray)
+                .ThenInclude(bada => bada.InputSaldoDetails)
+                .Include(ef => ef.ExcelFileReportDetails)
+                .ThenInclude(efrd => efrd.ClassDetailsArray)
+                .ThenInclude(cda => cda.BankAccountDetailsArray)
+                .ThenInclude(bada => bada.TurnoverDetails)
+                .Include(ef => ef.ExcelFileReportDetails)
+                .ThenInclude(efrd => efrd.ClassDetailsArray)
+                .ThenInclude(cda => cda.BankAccountDetailsArray)
+                .ThenInclude(bada => bada.OutputSaldoDetails)
+                .FirstOrDefault();
+        }
+    }
+    
     public ExcelFile[] GetExcelFiles(DateTime? fromDate = null, DateTime? toDate = null)
     {
         // получение данных

@@ -1,6 +1,7 @@
 @page "/file/{ExcelFileId:int}"
 @using B1TestTask.Components
 @using B1TestTask.Data
+@using B1TestTask.Helpers
 @inject ExcelFilesService excelFilesService
 
 <h3>Просмотр excel-файла</h3>
@@ -79,18 +80,22 @@
             {
                 <tr>
                     <td>@bankAccount.Number.ToString()</td>
-                    <td>@bankAccount.InputSaldoDetails.Active.ToString()</td>
-                    <td>@bankAccount.InputSaldoDetails.Passive.ToString()</td>
-                    <td>@bankAccount.TurnoverDetails.Debit.ToString()</td>
-                    <td>@bankAccount.TurnoverDetails.Credit.ToString()</td>
-                    <td>@bankAccount.OutputSaldoDetails.Active.ToString()</td>
-                    <td>@bankAccount.OutputSaldoDetails.Passive.ToString()</td>
+                    <td>@bankAccount.InputSaldoDetails.Active.NormalizeAndReturnString()</td>
+                    <td>@bankAccount.InputSaldoDetails.Passive.NormalizeAndReturnString()</td>
+                    <td>@bankAccount.TurnoverDetails.Debit.NormalizeAndReturnString()</td>
+                    <td>@bankAccount.TurnoverDetails.Credit.NormalizeAndReturnString()</td>
+                    <td>@bankAccount.OutputSaldoDetails.Active.NormalizeAndReturnString()</td>
+                    <td>@bankAccount.OutputSaldoDetails.Passive.NormalizeAndReturnString()</td>
                 </tr>
             }
             <tr>
                 <td style="font-weight: bold;">ПО КЛАССУ</td>
-                <td>@classDetails.BankAccountDetailsArray.Aggregate((x, y) => x.InputSaldoDetails.Active + y.InputSaldoDetails.Active).ToString()</td>
-
+                <td>@BankAccountDetailsSummator.SumClassBankAccountDetails(classDetails).InputSaldoDetails.Active.NormalizeAndReturnString()</td>
+                <td>@BankAccountDetailsSummator.SumClassBankAccountDetails(classDetails).InputSaldoDetails.Passive.NormalizeAndReturnString()</td>
+                <td>@BankAccountDetailsSummator.SumClassBankAccountDetails(classDetails).TurnoverDetails.Debit.NormalizeAndReturnString()</td>
+                <td>@BankAccountDetailsSummator.SumClassBankAccountDetails(classDetails).TurnoverDetails.Credit.NormalizeAndReturnString()</td>
+                <td>@BankAccountDetailsSummator.SumClassBankAccountDetails(classDetails).OutputSaldoDetails.Active.NormalizeAndReturnString()</td>
+                <td>@BankAccountDetailsSummator.SumClassBankAccountDetails(classDetails).OutputSaldoDetails.Passive.NormalizeAndReturnString()</td>
             </tr>
         }
 

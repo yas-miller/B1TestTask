@@ -148,7 +148,7 @@ public class ExcelFileParser
                                 }
 
                                 var cd = new ClassDetails();
-                                cd.Title = String.Join(" ", val.Split(" ").Skip(2));
+                                cd.Title = String.Join(" ", val.Split("  ").Skip(2));
                                 cd.Number = int.Parse(val.Split()[2]);
                                 
                                 this.excelFile.ExcelFileReportDetails.ClassDetailsArray.Add(cd);

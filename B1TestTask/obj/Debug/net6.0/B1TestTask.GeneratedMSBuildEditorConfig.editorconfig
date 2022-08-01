@@ -31,16 +31,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWxsRmlsZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/ExcelFileLoader.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhjZWxGaWxlTG9hZGVyLnJhem9y
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/BlankLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmxhbmtMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/ExcelFileLoad.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhjZWxGaWxlTG9hZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Shared/SurveyPrompt.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/_Imports.razor]
@@ -51,9 +51,13 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9DdXN0b21Mb2FkaW5nU3Bpbm5lci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-yu4zohre9l
 
-[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/ExcelFileViewer.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhjZWxGaWxlVmlld2VyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-i3sc1ifbxt
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/ExcelFileView.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhjZWxGaWxlVmlldy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-xn83tsmz3r
+
+[/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Pages/ExcelFileViewPrint.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhjZWxGaWxlVmlld1ByaW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-oblvfmzptr
 
 [/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=

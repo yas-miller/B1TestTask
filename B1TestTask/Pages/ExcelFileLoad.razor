@@ -14,29 +14,18 @@
     <CustomLoadingSpinner/>
 }
 
-<p role="status">Количество документов: @CurrentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
-
-<InputFile OnChange="@UploadFiles" multiple accept=".xls,.xlsx"/>
+<InputFile OnChange="@UploadFiles" accept=".xls,.xlsx" multiple/>
 
 @code {
     private bool ModalIsVisible { get; set; } = false;
     private string ModalHeading { get; set; }
     private string ModalMessage { get; set; }
 
-    private int CurrentCount = 0;
     private bool IsLoading { get; set; } = false;
     private decimal ProgressPercent { get; set; } = 0;
 
     private List<FileInfo> loadedFiles = new List<FileInfo>();
     private long maxFileSize = 1024 * 1024; //1 Мб
-
-    private void IncrementCount()
-    {
-        CurrentCount++;
-    }
 
     private async void UploadFiles(InputFileChangeEventArgs e)
     {

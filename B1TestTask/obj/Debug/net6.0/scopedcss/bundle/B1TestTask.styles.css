@@ -20,13 +20,18 @@
         transform: rotate(360deg)
     }
 }
-/* _content/B1TestTask/Pages/ExcelFileViewer.razor.rz.scp.css */
-.table-border th[b-i3sc1ifbxt],
-.table-border td[b-i3sc1ifbxt],
-.table-border thead th[b-i3sc1ifbxt],
-.table-border tbody + tbody[b-i3sc1ifbxt] {
+/* _content/B1TestTask/Pages/ExcelFileView.razor.rz.scp.css */
+.table-border th[b-xn83tsmz3r],
+.table-border td[b-xn83tsmz3r],
+.table-border thead th[b-xn83tsmz3r],
+.table-border tbody + tbody[b-xn83tsmz3r] {
     border: 1px solid gray;
     height: 30px;
+}
+/* _content/B1TestTask/Pages/ExcelFileViewPrint.razor.rz.scp.css */
+.padding-between-rows td[b-oblvfmzptr]
+{
+    padding: 5px;
 }
 /* _content/B1TestTask/Shared/MainLayout.razor.rz.scp.css */
 .page[b-gvk5rmyxjp] {

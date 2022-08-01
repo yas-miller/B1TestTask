@@ -11,6 +11,6 @@ public static class DecimalExtension
     public static string NormalizeAndReturnString(this decimal value)
     {
         value = value.Normalize();
-        return value.ToString(CultureInfo.InvariantCulture);
+        return $"{value:0.00}";
     }
 }

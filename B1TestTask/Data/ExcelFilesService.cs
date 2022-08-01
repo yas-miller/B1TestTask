@@ -64,7 +64,20 @@ public class ExcelFilesService
         // получение данных
         using (var db = new ApplicationDBContext())
         {
-            var excelFiles = db.ExcelFiles.ToArray();
+            var excelFiles = db.ExcelFiles
+                .Include(ef => ef.ExcelFileReportDetails)
+                .ThenInclude(efrd => efrd.ClassDetailsArray)
+                .ThenInclude(cda => cda.BankAccountDetailsArray)
+                .ThenInclude(bada => bada.InputSaldoDetails)
+                .Include(ef => ef.ExcelFileReportDetails)
+                .ThenInclude(efrd => efrd.ClassDetailsArray)
+                .ThenInclude(cda => cda.BankAccountDetailsArray)
+                .ThenInclude(bada => bada.TurnoverDetails)
+                .Include(ef => ef.ExcelFileReportDetails)
+                .ThenInclude(efrd => efrd.ClassDetailsArray)
+                .ThenInclude(cda => cda.BankAccountDetailsArray)
+                .ThenInclude(bada => bada.OutputSaldoDetails)
+                .ToArray();
             return excelFiles;
         }
     }

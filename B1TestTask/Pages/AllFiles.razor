@@ -3,7 +3,9 @@
 @using B1TestTask.Components
 @inject ExcelFilesService excelFilesService
 
-<h3>Список всех файлов</h3>
+<PageTitle>Список всех файлов</PageTitle>
+
+<h1>Список всех файлов</h1>
 
 @if (IsLoading)
 {
@@ -18,27 +20,51 @@
 
 @if (ExcelFiles is not null)
 {
+    <p role="status">Количество документов: @ExcelFiles.Length.ToString()</p>
+
     <table class="excel_files_table">
         <thead>
         <tr>
             <th>Имя файла</th>
-            <th></th>
+            <th>Расширение</th>
             <th>Полное имя файла</th>
-            <th>Summary</th>
+            <th>Дата добавления</th>
+            <th>Успешно обработано</th>
         </tr>
         </thead>
         <tbody>
         @foreach (var excelFile in ExcelFiles)
         {
-            <a href="/file/@excelFile.Id" title="Просмотреть @excelFile.Name">
-                <tr>
-                    <td>@excelFile.Name</td>
-                    <td>@excelFile.Extension</td>
-                    <td>@excelFile.FullName</td>
-                    <td>@excelFile.Description</td>
-                    <td>@excelFile.AddedDate.ToString()</td>
-                </tr>
-            </a>
+            <tr class="clickable-row" title="Просмотреть @excelFile.Name">
+                    <td>
+                        <a href="/file/@excelFile.Id.ToString()">
+                            @excelFile.Name
+                        </a>
+                    </td>
+                        <td>
+                            <a href="/file/@excelFile.Id.ToString()">
+                                @excelFile.Extension
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/file/@excelFile.Id.ToString()">
+                                @excelFile.FullName
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/file/@excelFile.Id.ToString()">
+                                @excelFile.AddedDate.ToString()
+                            </a>
+                        </td>
+                        @if (excelFile.ExcelFileReportDetails?.IsValidReport is true)
+                        {
+                            <td>✅</td>
+                        }
+                        else
+                        {
+                            <td>❌</td>
+                        }
+            </tr>
         }
         </tbody>
     </table>

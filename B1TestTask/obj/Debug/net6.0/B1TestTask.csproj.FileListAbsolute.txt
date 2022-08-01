@@ -50,4 +50,5 @@
 /Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/obj/Debug/net6.0/B1TestTask.pdb
 /Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/obj/Debug/net6.0/B1TestTask.genruntimeconfig.cache
 /Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/obj/Debug/net6.0/ref/B1TestTask.dll
-/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/obj/Debug/net6.0/scopedcss/Pages/ExcelFileViewer.razor.rz.scp.css
+/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/obj/Debug/net6.0/scopedcss/Pages/ExcelFileView.razor.rz.scp.css
+/Users/andrejasukevic/RiderProjects/B1TestTask/B1TestTask/obj/Debug/net6.0/scopedcss/Pages/ExcelFileViewPrint.razor.rz.scp.css
